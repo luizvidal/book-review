@@ -15,8 +15,8 @@ interface Book {
   id: string;
   title: string;
   author: string;
-  cover: string;
-  genre: string;
+  coverImage?: string;
+  description?: string;
 }
 
 interface Review {
@@ -176,9 +176,9 @@ export default function DashboardPage() {
                 <Card key={book.id}>
                   <CardHeader className="flex flex-row items-start gap-4 space-y-0">
                     <div className="w-16 h-24 bg-muted rounded overflow-hidden">
-                      {book.cover ? (
+                      {book.coverImage ? (
                         <img
-                          src={book.cover}
+                          src={book.coverImage}
                           alt={book.title}
                           className="w-full h-full object-cover"
                         />
@@ -194,7 +194,7 @@ export default function DashboardPage() {
                         by {book.author}
                       </CardDescription>
                       <CardDescription className="line-clamp-1">
-                        {book.genre}
+                        {book.description || 'No description'}
                       </CardDescription>
                     </div>
                   </CardHeader>

@@ -15,8 +15,8 @@ interface BookDetails {
   id: string;
   title: string;
   author: string;
-  cover: string;
-  genre: string;
+  coverImage?: string;
+  description?: string;
 }
 
 interface Review {
@@ -202,9 +202,9 @@ export default function BookDetailsPage() {
         <div className="md:w-1/3">
           <Card>
             <div className="aspect-[2/3] relative bg-muted">
-              {book.cover ? (
+              {book.coverImage ? (
                 <img
-                  src={book.cover}
+                  src={book.coverImage}
                   alt={book.title}
                   className="object-cover w-full h-full"
                 />
@@ -221,8 +221,8 @@ export default function BookDetailsPage() {
             <CardContent>
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-sm font-medium">Genre:</span>
-                  <span className="text-sm">{book.genre}</span>
+                  <span className="text-sm font-medium">Description:</span>
+                  <span className="text-sm">{book.description || 'No description available'}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm font-medium">Rating:</span>

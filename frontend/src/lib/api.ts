@@ -136,9 +136,16 @@ export const booksApi = {
       return null;
     }
   },
-  create: async (bookData: { title: string; author: string; cover: string; genre: string }) => {
+  create: async (bookData: { title: string; author: string; cover?: string; genre: string }) => {
+    // Map frontend fields to backend fields
+    const backendData = {
+      title: bookData.title,
+      author: bookData.author,
+      coverImage: bookData.cover,
+      description: bookData.genre // Using genre as description for now
+    };
     try {
-      const response = await api.post('/books', bookData);
+      const response = await api.post('/books', backendData);
       console.log('Raw API response from create:', response);
       return response.data;
     } catch (error) {
@@ -146,9 +153,15 @@ export const booksApi = {
       throw error;
     }
   },
-  update: async (id: string, bookData: Partial<{ title: string; author: string; cover: string; genre: string }>) => {
+  update: async (id: string, bookData: Partial<{ title: string; author: string; cover?: string; genre: string }>) => {
+    // Map frontend fields to backend fields
+    const backendData: Record<string, string> = {};
+    if (bookData.title) backendData.title = bookData.title;
+    if (bookData.author) backendData.author = bookData.author;
+    if (bookData.cover) backendData.coverImage = bookData.cover;
+    if (bookData.genre) backendData.description = bookData.genre;
     try {
-      const response = await api.patch(`/books/${id}`, bookData);
+      const response = await api.patch(`/books/${id}`, backendData);
       console.log('Raw API response from update:', response);
       return response.data;
     } catch (error) {

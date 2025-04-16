@@ -12,8 +12,8 @@ interface BookWithRating {
   id: string;
   title: string;
   author: string;
-  cover?: string;
-  genre: string;
+  coverImage?: string;
+  description?: string;
   averageRating?: number;
   reviewCount?: number;
 }
@@ -99,9 +99,9 @@ export default function BooksPage() {
           {books.map((book) => (
             <Card key={book.id} className="overflow-hidden">
               <div className="aspect-[2/3] relative bg-muted">
-                {book.cover ? (
+                {book.coverImage ? (
                   <img
-                    src={book.cover}
+                    src={book.coverImage}
                     alt={book.title}
                     className="object-cover w-full h-full"
                   />
@@ -118,7 +118,7 @@ export default function BooksPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-4 pt-0 flex justify-between items-center">
-                <span className="text-sm text-muted-foreground">{book.genre}</span>
+                <span className="text-sm text-muted-foreground">{book.description || 'No description'}</span>
                 <div className="flex items-center">
                   <Star className={`h-4 w-4 mr-1 ${book.averageRating && book.averageRating > 0 ? 'fill-primary text-primary' : 'text-muted-foreground'}`} />
                   <span className="text-sm">
