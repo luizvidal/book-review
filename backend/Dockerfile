@@ -14,7 +14,7 @@ RUN npm install --legacy-peer-deps
 COPY . .
 
 # Aplicar patch para o problema do crypto.randomUUID()
-RUN node patch-typeorm.js
+RUN node scripts/typeorm-patch.js
 
 # Compilar o projeto
 RUN npm run build

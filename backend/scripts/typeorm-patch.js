@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Caminho para o arquivo problemático
-const filePath = path.join(__dirname, 'node_modules/@nestjs/typeorm/dist/common/typeorm.utils.js');
+const filePath = path.join(__dirname, '../node_modules/@nestjs/typeorm/dist/common/typeorm.utils.js');
 
 // Verificar se o arquivo existe
 if (fs.existsSync(filePath)) {
