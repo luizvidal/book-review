@@ -68,7 +68,7 @@ export default function BooksPage() {
   }, [toast]);
 
   return (
-    <div className="space-y-6">
+    <div>
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold tracking-tight">Books</h1>
         <Link href="/books/new">
@@ -77,11 +77,11 @@ export default function BooksPage() {
       </div>
 
       {isLoading ? (
-        <div className="flex justify-center py-8">
+        <div className="flex justify-center py-8 mt-6">
           <p>Loading books...</p>
         </div>
       ) : books.length === 0 ? (
-        <Card>
+        <Card className="mt-6">
           <CardHeader>
             <CardTitle>No books found</CardTitle>
             <CardDescription>
@@ -95,7 +95,7 @@ export default function BooksPage() {
           </CardFooter>
         </Card>
       ) : (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
           {books.map((book) => (
             <Card key={book.id} className="overflow-hidden">
               <div className="aspect-[2/3] relative bg-muted">
