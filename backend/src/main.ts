@@ -37,8 +37,10 @@ async function bootstrap() {
     },
   });
 
-  await app.listen(process.env.PORT ?? 3000);
-  console.log(`Aplicação rodando na porta ${process.env.PORT ?? 3000}`);
-  console.log(`Documentação Swagger disponível em: http://localhost:${process.env.PORT ?? 3000}/api`);
+  // Usar porta 3001 para o backend para evitar conflito com o frontend (porta 3000)
+  const port = process.env.PORT ?? 3001;
+  await app.listen(port);
+  console.log(`Aplicação rodando na porta ${port}`);
+  console.log(`Documentação Swagger disponível em: http://localhost:${port}/api`);
 }
 bootstrap();
