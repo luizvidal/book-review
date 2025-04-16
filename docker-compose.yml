@@ -32,6 +32,7 @@ services:
       postgres:
         condition: service_healthy
     environment:
+      - NODE_ENV=development
       - PORT=3001
       - DB_HOST=postgres
       - DB_PORT=5432
@@ -40,9 +41,7 @@ services:
       - DB_DATABASE=book_review
       - JWT_SECRET=your_jwt_secret_key_here
       - JWT_EXPIRES_IN=1d
-    volumes:
-      - ./backend:/app
-      - backend_node_modules:/app/node_modules
+    # Sem volumes para o backend
     restart: unless-stopped
     networks:
       - book-review-network
@@ -53,4 +52,3 @@ networks:
 
 volumes:
   postgres_data:
-  backend_node_modules:
