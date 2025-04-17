@@ -2,8 +2,8 @@
 
 import axios from 'axios';
 
-// Update this URL to match your backend API URL
-const API_URL = 'http://localhost:3001';
+// API URL based on environment
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
 const api = axios.create({
   baseURL: API_URL,
